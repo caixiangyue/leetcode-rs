@@ -18,7 +18,9 @@ impl Solution {
         let mut map = HashMap::with_capacity(nums.len());
         for (k, v) in nums.iter().enumerate() {
             match map.get(&(target - v)) {
-                None => { map.insert(v, k); }
+                None => {
+                    map.insert(v, k);
+                }
                 Some(sub) => return vec![*sub as i32, k as i32],
             }
         }
@@ -26,14 +28,9 @@ impl Solution {
     }
 }
 
-#[cfg(test)]    
-mod tests {
-    use super::Solution;
-
-    #[test]
-    fn test_1() {
-        let v: Vec<i32> = Vec::new();
-        assert_eq!(vec![0, 1], Solution::two_sum(vec![2, 7, 11, 15], 9));
-        assert_eq!(v, Solution::two_sum(vec![10], 5));
-    }
+#[test]
+fn test_1() {
+    let v: Vec<i32> = Vec::new();
+    assert_eq!(vec![0, 1], Solution::two_sum(vec![2, 7, 11, 15], 9));
+    assert_eq!(v, Solution::two_sum(vec![10], 5));
 }
